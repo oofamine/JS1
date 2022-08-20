@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Интернет-магазин</title>
+</head>
+<body>
+<header>
+    <button class="btn-cart" type="button">Корзина</button>
+</header>
+<main>
+    <div class="products" style="border: 1px solid black;"></div>
+</main>
+<script>
+  const products = [
+    {   
+        id: 1, 
+        title: 'Ноутбук', 
+        price: 25000
+    },
+    {   
+        id: 2,
+        title: 'Мышка', 
+        price: 1000
+    },
+    {
+        id: 3, 
+        title: 'Клавиатура', 
+        price: 5500
+    },
+    {
+        id: 4, 
+        title: 'Геймпад', 
+        price: 1500
+    },
+];
+
+const getProductHTMLString = (id, title, price) => {
+    return `<div class="product-item" data-id="${id}">
+                <p>ID продукта: ${id}</p>
+                <h3>${title}</h3>
+                <p>${price}</p>
+                <button class="by-btn">Добавить</button>
+            </div>`;
+};
+
+const renderProducts = productList => {
+  const list = productList.map((good) => getProductHTMLString(good.id, good.title, good.price));
+// Для то го что бы убрать запятые - я использую метод join c разделителем в виде пустой строки(данный метод объединяет элементы массива встроку)
+  document.querySelector('.products').innerHTML = list.join('');
+    // console.log(list);
+}
+//pull request
+
+renderProducts(products);
+/////////////////////////////
+</script>
+</body>
+</html>
